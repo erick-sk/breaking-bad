@@ -1,21 +1,31 @@
-import Logo from './breaking-bad-logo.svg';
-import styled from '@emotion/styled';
+import { useState, useEffect } from 'react';
 
-const LogoContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const BreakingBadLogo = styled.img`
-  max-width: 100%;
-`;
+import Quote from './components/Quote';
+import Logo from './components/Logo';
 
 function App() {
+  const [phrase, setPhrase] = useState({});
+
+  // call to api
+  useEffect(() => {
+    const callingTheApi = async () => {
+      try {
+        const url = 'https://www.breakingbadapi.com/api/quote/random';
+
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => setPhrase(data[0]));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    callingTheApi();
+  }, []);
+
   return (
     <>
-      <LogoContainer>
-        <BreakingBadLogo src={Logo} alt="breaking bad logo" />
-      </LogoContainer>
+      <Logo />
+      <Quote phrase={phrase} />
     </>
   );
 }

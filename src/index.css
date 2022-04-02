@@ -1,3 +1,8 @@
+:root {
+  --white: #f6f8fa;
+  --black: #010302;
+}
+
 html {
   box-sizing: border-box;
 }
