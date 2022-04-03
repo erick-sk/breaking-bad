@@ -6,26 +6,28 @@ import Logo from './components/Logo';
 function App() {
   const [phrase, setPhrase] = useState({});
 
+  // get data from api
+  const callingTheApi = async () => {
+    try {
+      const url = 'https://www.breakingbadapi.com/api/quote/random';
+
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => setPhrase(data[0]));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // call to api
   useEffect(() => {
-    const callingTheApi = async () => {
-      try {
-        const url = 'https://www.breakingbadapi.com/api/quote/random';
-
-        fetch(url)
-          .then((response) => response.json())
-          .then((data) => setPhrase(data[0]));
-      } catch (error) {
-        console.log(error);
-      }
-    };
     callingTheApi();
   }, []);
 
   return (
     <>
       <Logo />
-      <Quote phrase={phrase} />
+      <Quote phrase={phrase} callingTheApi={callingTheApi} />
     </>
   );
 }

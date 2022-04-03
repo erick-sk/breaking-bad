@@ -1,28 +1,33 @@
 import styled from '@emotion/styled';
+import Button from './Button';
 
 const QuoteContainer = styled.div`
-  height: 20rem;
-  display: grid;
-  place-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6rem;
 
   @media (min-width: 1920px) {
-    height: 30rem;
+    margin-top: 10rem;
   }
 `;
 
 const ShowQuote = styled.div`
-  background-color: var(--white);
+  width: 100%;
   padding: 1rem;
+  background-color: var(--white);
   border-radius: 1rem;
 
-  @media (min-width: 768px) {
-    width: 50rem;
+  @media (min-width: 1024px) {
+    width: 60rem;
   }
 `;
 
 const Text = styled.h1`
+  margin: 0;
   color: var(--black);
   font-size: 1rem;
+  text-align: center;
 
   @media (min-width: 768px) {
     font-size: 2rem;
@@ -30,7 +35,9 @@ const Text = styled.h1`
 `;
 
 const Author = styled.p`
+  margin: 0;
   color: var(--black);
+  text-align: center;
   font-size: 0.85rem;
   font-style: italic;
 
@@ -39,7 +46,7 @@ const Author = styled.p`
   }
 `;
 
-const Quote = ({ phrase }) => {
+const Quote = ({ phrase, callingTheApi }) => {
   const { quote, author } = phrase;
 
   return (
@@ -48,6 +55,8 @@ const Quote = ({ phrase }) => {
         <Text>"{quote}"</Text>
         <Author>- {author}</Author>
       </ShowQuote>
+
+      <Button callingTheApi={callingTheApi} />
     </QuoteContainer>
   );
 };

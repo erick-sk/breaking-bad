@@ -12,10 +12,6 @@ const LogoContainer = styled.div`
   }
 `;
 
-// const BreakingBadLogo = styled.img`
-//   width: 10rem;
-// `;
-
 const Logo = () => {
   return (
     <LogoContainer>

@@ -22,11 +22,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: rgb(0, 0, 0);
+  background: rgb(0, 125, 53);
   background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(24, 46, 27, 1) 50%,
-    rgba(46, 80, 48, 1) 100%
+    135deg,
+    rgba(0, 125, 53, 1) 0%,
+    rgba(5, 111, 62, 1) 70%,
+    rgba(13, 92, 75, 1) 100%
   );
 }
