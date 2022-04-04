@@ -1,6 +1,8 @@
 # Breaking Bad
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bbd1720a-12d7-41a5-a615-ec1028485e1f/deploy-status)](https://app.netlify.com/sites/breaking-bad-erick-sk/deploys)
 
-Website that shows you random phrases said by the characters of the Breaking Bad series.
+Website that shows you random phrases said by the characters of the Breaking Bad series. <br/>
+You can visit the project live site [here](https://www.breaking-bad.ericksaavedra.me/).
 
 ## Installation
 
