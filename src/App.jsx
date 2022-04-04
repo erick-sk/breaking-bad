@@ -1,21 +1,31 @@
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect, useRef } from 'react';
 import Quote from './components/Quote';
 import Logo from './components/Logo';
 
 function App() {
   const [phrase, setPhrase] = useState({});
+  const [loading, setLoading] = useState(false);
+  const loadingRef = useRef();
+  loadingRef.current = loading;
 
   // get data from api
   const callingTheApi = async () => {
-    try {
-      const url = 'https://www.breakingbadapi.com/api/quote/random';
+    setLoading(true);
 
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => setPhrase(data[0]));
+    if (loadingRef.current) return;
+
+    const url = 'https://www.breakingbadapi.com/api/quote/random';
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return setPhrase(data[0]);
     } catch (error) {
       console.log(error);
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
   };
 
@@ -27,7 +37,7 @@ function App() {
   return (
     <>
       <Logo />
-      <Quote phrase={phrase} callingTheApi={callingTheApi} />
+      <Quote phrase={phrase} callingTheApi={callingTheApi} loading={loading} />
     </>
   );
 }

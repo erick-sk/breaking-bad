@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Button from './Button';
+import Spinner from './Spinner';
 
 const QuoteContainer = styled.div`
   display: flex;
@@ -46,18 +47,24 @@ const Author = styled.p`
   }
 `;
 
-const Quote = ({ phrase, callingTheApi }) => {
+const Quote = ({ phrase, callingTheApi, loading }) => {
   const { quote, author } = phrase;
 
   return (
-    <QuoteContainer>
-      <ShowQuote>
-        <Text>"{quote}"</Text>
-        <Author>- {author}</Author>
-      </ShowQuote>
+    <>
+      <QuoteContainer>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <ShowQuote>
+            <Text>"{quote}"</Text>
+            <Author>- {author}</Author>
+          </ShowQuote>
+        )}
+      </QuoteContainer>
 
       <Button callingTheApi={callingTheApi} />
-    </QuoteContainer>
+    </>
   );
 };
 
